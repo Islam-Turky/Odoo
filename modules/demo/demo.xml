@@ -1,0 +1,16 @@
+<odoo>
+    <record model ="modules.course" id="0">
+            <field name="name" >course0</field>
+            <field name="description">my course 0</field>
+    </record>
+
+    <record model ="modules.course" id="1">
+            <field name="name" >course1</field>
+            <field name="description">my course 1</field>
+    </record>
+
+    <record model ="modules.course" id="2">
+            <field name="name" >course2</field>
+            <field name="description">my course 2</field>
+    </record>
+</odoo>

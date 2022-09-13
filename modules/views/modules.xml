@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="Courses_form_view">
+        <field name="name">courses.form</field>
+        <field name="model">modules.course</field>
+        <field name="arch" type="xml">
+            <form string="python form">
+                <sheet>
+                    <group string="Courses">
+                        <field name="name"/>
+                        <field name="responsible_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Sessions">
+                            <field name="sessions_ids"/>
+                        </page>
+                        <page string="Description">
+                            <field name="S_name"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+    <record model="ir.ui.view" id="python_tree_view">
+        <field name="name">python.view</field>
+        <field name="model">modules.course</field>
+        <field name="arch" type="xml">
+            <tree string="Courses For All">
+                <field name="name"/>
+                <field name="responsible_id"/>
+                <field name="sessions_ids"/>
+                <field name="S_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="python_search_view">
+        <field name="name">python.search</field>
+        <field name="model">modules.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="responsible_id"/>
+                <field name="sessions_ids"/>
+                <field name="S_name"/>
+            </search>
+        </field>
+    </record>
+
+        <record model="ir.ui.view" id="session_kanban">
+        <field name="name">modules.kanban</field>
+        <field name="model">modules.course</field>
+        <field name="arch" type="xml">
+            <kanban default="course_id">
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top ">
+                                <div class="o_kanban_record_headings mt4">
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                </div>
+                                <field name="responsible_id" widget="label_selection"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="module_list_actions">
+            <field name="name" >Courses</field>
+            <field name="res_model">modules.course</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">create your first Course</p>
+            </field>
+    </record>
+
+    <menuitem id="python_menu" name="Courses for free" web_icon="modules,static/description/icon.png"/>
+        <menuitem id="main_modules_menu" name="Details About : " parent="python_menu"/>
+        <menuitem id="modules_menu" name="Courses"  parent="main_modules_menu" action="module_list_actions"/>
+
+
+<!--  Session view  -->
+    <record model="ir.ui.view" id="frameworks_form_view">
+        <field name="name">python.form</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name_second" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group string="SESSIONS">
+                        <field name="name"/>
+                        <field name="instructor_id"/>
+                        <field name="course_id"/>
+                        <field name="image"/>
+                    </group>
+                    <group string="STATISTICS">
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="end_date"/>
+                        <field name="seats"/>
+                        <field name="taken_seats" widget="progressbar"/>
+                    </group>
+                    <label for="attendee_ids"/>
+                    <field name="attendee_ids"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="frameworks_tree_view">
+        <field name="name">Python.tree</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <tree string="Session Deatails" decoration-success="taken_seats&lt;60" decoration-danger="taken_seats&gt;60" decoration-info="taken_seats==60">
+                <field name="name"/>
+                <field name="instructor_id"/>
+                <field name="course_id"/>
+                <field name="start_date"/>
+                <field name="seats"/>
+                <field name="duration"/>
+                <field name="taken_seats" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_calendar_view">
+        <field name="name">frameworks.calendar</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <calendar string="Session Calendar" date_start="start_date" date_stop="end_date" color="instructor_id">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_graph_view">
+        <field name="name">frameworks.graph</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <graph string="Participations">
+                <field name="course_id"/>
+                <field name="attendees_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_graph_view">
+        <field name="name">frameworks.pivot</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <pivot string="Participations">
+                <field name="course_id"/>
+                <field name="attendees_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+
+
+
+    <record model="ir.ui.view" id="frameworks_search_view">
+        <field name="name">python.search</field>
+        <field name="model">frameworks</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="instructor_id"/>
+                <field name="course_id"/>
+                <field name="start_date"/>
+                <field name="seats"/>
+                <field name="duration"/>
+                <field name="taken_seats" widget="progressbar"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="frameworks_menu">
+        <field name="name">Sessions</field>
+        <field name="res_model">frameworks</field>
+        <field name="view_mode">tree,form,calendar,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">create your first Session</p>
+        </field>
+    </record>
+
+    <menuitem id="framework_menu" name="Sessions" parent="main_modules_menu" action="frameworks_menu"/>
+
+</odoo>

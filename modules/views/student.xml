@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="student_form_view">
+        <field name="name">modules.student.form</field>
+        <field name="model">modules.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="image"/>
+                    </group>
+                    <group string="Details">
+                        <field name="name"/>
+                        <field name="Gender"/>
+                        <field name="age"/>
+                        <field name="Course_in_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="student_tree">
+        <field name="name">student.tree.view</field>
+        <field name="model">modules.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="Gender"/>
+                <field name="age"/>
+                <field name="Course_in_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="student_search">
+        <field name="name">student.form.view</field>
+        <field name="model">modules.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="Gender"/>
+                <field name="age"/>
+                <field name="Course_in_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="student_actions">
+        <field name="name">students</field>
+        <field name="res_model">modules.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Log IN</p>
+        </field>
+    </record>
+    <menuitem name="Student" id="student_menu" parent="main_modules_menu" action="student_actions"/>
+
+</odoo>
