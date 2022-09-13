@@ -17,7 +17,7 @@ ing language
 
 
 <h3>Some Photo From My Odoo Project</h3>
-![Screenshot 2022-09-13 181408](https://user-images.githubusercontent.com/107361423/189953597-f996dedd-c1c3-4ef9-b350-c55240c6524d.png)
+
 
 
 
