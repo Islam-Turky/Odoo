@@ -12,8 +12,7 @@ any foundation.
 
 <h4>About This App</h4>
 this a simple app on odoo 
-platform using python programm_
-ing language
+platform using python programming language
 
 
 <h3>Some Photo From My Odoo Project</h3>
