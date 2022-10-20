@@ -12,7 +12,7 @@ any foundation.
 
 <h4>About This App</h4>
 this a simple app on odoo 
-platform using python ptogramm_
+platform using python programm_
 ing language
 
 
